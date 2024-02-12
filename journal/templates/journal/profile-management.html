@@ -1,0 +1,64 @@
+{% extends "journal/navbar.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <head>
+
+        <title> Thoughts | Profile management </title>
+
+    </head>
+
+    <br>
+    <div class="container bg-white shadow-md p-5 form-layout">
+        <h3>Update username and email</h3>
+        <p>You can change your username and email down below:</p>
+        <br>
+
+
+    </form><form method="POST" autocomplete="off">
+        {% csrf_token %}
+
+        {{UserUpdateForm|crispy}}
+        <br> <br>
+        <button class="btn btn-outline-primary btn-md w-100 btn-block p-3" type="submit"><i class="fa fa-pencil" aria-hidden="true"></i> &nbsp;Update</button>
+
+
+
+    </form>
+    </div>
+<br>
+
+ <div class="container bg-white shadow-md p-5 form-layout">
+        <h3>Update profile picture</h3>
+        <p>You may change or upload a profile picture below:</p>
+        <br>
+
+
+    </form><form method="POST" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ProfileUpdateForm|crispy}}
+        <br> <br>
+        <button class="btn btn-outline-primary btn-md w-100 btn-block p-3" type="submit"><i class="fa fa-upload" aria-hidden="true"></i>
+ &nbsp;Upload profile picture</button>
+
+
+
+    </form>
+    </div>
+<br>
+<div class="container bg-white shadow-md p-5 form-layout">
+    <h3>Delete your account</h3>
+    <p>If you would like to close your account, please proceed below:</p>
+        <br>
+
+     <a   href="{% url 'delete-account' %}">Proceed to delete your account</a>
+
+
+
+
+</div>
+<script src="{% static 'js/app.js' %}"></script>
+<br>
+{% endblock %}
